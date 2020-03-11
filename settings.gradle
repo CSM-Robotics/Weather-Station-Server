@@ -1,2 +1,5 @@
 rootProject.name = 'weather-station-server'
+include 'wss-domain'
+include 'wss-web'
+include 'wss-persistance'
 

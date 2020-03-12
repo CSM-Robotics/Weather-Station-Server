@@ -19,4 +19,8 @@ public class PackageService {
     public Package getPackage(Long id) {
         return packageRep.findById(id).orElse(null);
     }
+
+    public Iterable<Package> getAll() {
+        return packageRep.findAll();
+    }
 }

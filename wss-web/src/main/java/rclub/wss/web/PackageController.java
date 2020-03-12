@@ -20,4 +20,9 @@ public class PackageController {
     public Package addPackage(@RequestBody Package p) {
         return service.addPackage(p);
     }
+
+    @PostMapping("/getAll")
+    public Iterable<Package> getAll() {
+        return service.getAll();
+    }
 }

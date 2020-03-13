@@ -1,6 +1,9 @@
 package rclub.wss.domain.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -11,29 +14,23 @@ import javax.persistence.*;
  * <p>
  * variables names are unpleasant
  */
-@Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Entity
 @Table(name = "packages")
 public class Package {
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column
+    private Long id;
     private float temp;
-    @Column
     private float pressPa;
-    @Column
     private float hum;
-    @Column
     private float CO2ppm;
-    @Column
     private float tVOCpp;
-    @Column
     private long count;
-    @Column
     private long packetNum;
-    @Column
     private int deviceInfo;
     @Version
     private Long version;

@@ -393,6 +393,3 @@ gradle-app.setting
 .nfs*
 .idea/
 gradle/
-
-
-wss-web/src/main/resources/application.properties

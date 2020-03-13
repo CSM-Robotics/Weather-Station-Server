@@ -3,4 +3,5 @@ include 'wss-domain'
 include 'wss-web'
 include 'wss-persistance'
 include 'wss-service'
+include 'wss'
 

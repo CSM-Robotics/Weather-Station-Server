@@ -1,0 +1,8 @@
+group 'rclub'
+version '1.0-SNAPSHOT'
+
+useCommons()
+useSpring()
+dependencies {
+    compile project(":wss-web")
+}

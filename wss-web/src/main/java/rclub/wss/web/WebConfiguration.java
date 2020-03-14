@@ -1,4 +1,4 @@
-package rclub.wss;
+package rclub.wss.web;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;

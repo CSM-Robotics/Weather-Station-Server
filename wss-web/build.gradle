@@ -4,7 +4,7 @@ version '1.0.1'
 useCommons()
 useSpring()
 useSpringWeb()
+useSpringSecurity()
 dependencies {
     compile project(":wss-service")
-    compile project(":wss-security")
 }

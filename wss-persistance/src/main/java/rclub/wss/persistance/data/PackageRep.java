@@ -1,4 +1,4 @@
-package rclub.wss.persistance.rep;
+package rclub.wss.persistance.data;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

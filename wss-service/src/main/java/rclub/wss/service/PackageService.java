@@ -3,19 +3,12 @@ package rclub.wss.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import rclub.wss.domain.data.Package;
-import rclub.wss.persistance.rep.PackageRep;
+import rclub.wss.persistance.data.PackageRep;
 
 @Service
 @AllArgsConstructor
 public class PackageService {
     private final PackageRep packageRep;
-//
-//    @PostConstruct
-//    public void initPackages(){
-//        packageRep.saveAll(Stream.of(
-//
-//                ).collect(Collectors.toList()));
-//    }
 
     public Package addPackage(Package p) {
         return packageRep.save(p);

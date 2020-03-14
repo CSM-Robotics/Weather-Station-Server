@@ -393,3 +393,4 @@ gradle-app.setting
 .nfs*
 .idea/
 gradle/
+/wss-security/src/main/resources/jwt.conf

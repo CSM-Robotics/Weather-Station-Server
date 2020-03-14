@@ -1,6 +1,3 @@
-group 'rclub'
-version '1.0-SNAPSHOT'
-
 buildscript {
     ext {
         springBootVersion = '2.2.5.RELEASE'
@@ -11,16 +8,18 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath('se.transmode.gradle:gradle-docker:1.2')
     }
+
 }
+
+group 'rclub'
+version '1.0-SNAPSHOT'
+
 
 allprojects {
     apply plugin: 'java'
-    apply plugin: 'docker'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
-
     jar {
         enabled = true
     }
@@ -34,6 +33,8 @@ allprojects {
 }
 
 subprojects {
+
+
     ext.useSpring = {
 
         dependencies {
@@ -69,9 +70,9 @@ subprojects {
 
     ext.useSpringSecurity = {
         dependencies {
-            implementation('com.auth0:java-jwt:3.10.1')
             implementation('org.springframework.boot:spring-boot-starter-security')
             implementation('org.springframework.security:spring-security-test')
+            compile('com.auth0:java-jwt:3.8.1')
         }
     }
 

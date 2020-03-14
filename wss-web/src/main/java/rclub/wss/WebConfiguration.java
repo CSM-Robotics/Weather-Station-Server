@@ -8,8 +8,10 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Configuration
+@CrossOrigin
 public class WebConfiguration {
     @Bean
     public ServletWebServerFactory servletContainer() {

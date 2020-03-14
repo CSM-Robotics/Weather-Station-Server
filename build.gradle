@@ -18,6 +18,8 @@ buildscript {
 allprojects {
     apply plugin: 'java'
     apply plugin: 'docker'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
 
     jar {
         enabled = true
@@ -33,8 +35,6 @@ allprojects {
 
 subprojects {
     ext.useSpring = {
-        apply plugin: 'org.springframework.boot'
-        apply plugin: 'io.spring.dependency-management'
 
         dependencies {
             implementation('org.springframework.boot:spring-boot-starter')
@@ -69,6 +69,7 @@ subprojects {
 
     ext.useSpringSecurity = {
         dependencies {
+            implementation('com.auth0:java-jwt:3.10.1')
             implementation('org.springframework.boot:spring-boot-starter-security')
             implementation('org.springframework.security:spring-security-test')
         }

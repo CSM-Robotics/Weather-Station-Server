@@ -1,0 +1,10 @@
+group 'rclub'
+version '1.0.0'
+
+useSpring()
+useSpringSecurity()
+useSpringWeb()
+useCommons()
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

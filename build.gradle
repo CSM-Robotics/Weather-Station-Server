@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.2.5.RELEASE'
+        springBootVersion = '2.2.6.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -12,19 +12,36 @@ buildscript {
 
 }
 
-group 'rclub'
-version '1.0-SNAPSHOT'
+plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'idea'
+}
+
+bootJar {
+    enabled(true)
+    mainClassName = 'club.csmrobotics.WSSApplication'
+}
+
+bootRun {
+    main = 'club.csmrobotics.wss.WSSApplication'
+}
+
+
 
 
 allprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
-    jar {
-        enabled = true
-    }
+    group 'club.csmrobotics'
+    version '1.0-SNAPSHOT'
 
-    sourceCompatibility = 11
+    jar {
+        enabled(true)
+    }
+    sourceCompatibility = '11'
 
     repositories {
         mavenCentral()
@@ -34,6 +51,9 @@ allprojects {
 
 subprojects {
 
+    bootJar {
+        enabled = false
+    }
 
     ext.useSpring = {
 
@@ -75,7 +95,6 @@ subprojects {
             compile('com.auth0:java-jwt:3.8.1')
         }
     }
-
 
     ext.useSpringData = {
         dependencies {

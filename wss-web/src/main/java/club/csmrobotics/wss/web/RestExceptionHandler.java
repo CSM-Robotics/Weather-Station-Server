@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
-import static org.springframework.http.ResponseEntity.notFound;
-
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
-import static org.springframework.http.ResponseEntity.status;
+import static org.springframework.http.ResponseEntity.*;
 
 @RestControllerAdvice
 @Slf4j
@@ -26,5 +24,10 @@ public class RestExceptionHandler {
     public ResponseEntity<?> invalidJwtAuthentication(InvalidJwtAuthenticationException ex, WebRequest request) {
         log.debug("handling InvalidJwtAuthenticationException from" + request.toString() + "\n with exception: " + ex.getMessage());
         return status(UNAUTHORIZED).build();
+    }
+
+    @ExceptionHandler(value = {Exception.class})
+    public ResponseEntity<?> vehicleNotFound(Exception ex, WebRequest request) {
+        return badRequest().body("errer");
     }
 }

@@ -21,11 +21,12 @@ plugins {
 
 bootJar {
     enabled(true)
-    mainClassName = 'club.csmrobotics.WSSApplication'
+//    mainClassName = 'club.csmrobotics.WSSApplication'
 }
 
 bootRun {
-    main = 'club.csmrobotics.wss.WSSApplication'
+    enabled(true)
+//    main = 'club.csmrobotics.wss.WSSApplication'
 }
 
 
@@ -115,4 +116,3 @@ subprojects {
         }
     }
 }
-

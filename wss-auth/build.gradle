@@ -4,6 +4,4 @@ useSpring()
 useSpringWeb()
 useSpringSecurity()
 dependencies {
-    compile project(":wss-service")
-    compile project(":wss-auth")
 }

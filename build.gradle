@@ -1,9 +1,6 @@
-group 'rclub'
-version '1.0-SNAPSHOT'
-
 buildscript {
     ext {
-        springBootVersion = '2.2.5.RELEASE'
+        springBootVersion = '2.2.6.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -11,19 +8,41 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath('se.transmode.gradle:gradle-docker:1.2')
     }
+
 }
+
+plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'idea'
+}
+
+bootJar {
+    enabled(true)
+//    mainClassName = 'club.csmrobotics.WSSApplication'
+}
+
+bootRun {
+    enabled(true)
+//    main = 'club.csmrobotics.wss.WSSApplication'
+}
+
+
+
 
 allprojects {
     apply plugin: 'java'
-    apply plugin: 'docker'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    group 'club.csmrobotics'
+    version '1.0-SNAPSHOT'
 
     jar {
-        enabled = true
+        enabled(true)
     }
-
-    sourceCompatibility = 11
+    sourceCompatibility = '11'
 
     repositories {
         mavenCentral()
@@ -32,9 +51,12 @@ allprojects {
 }
 
 subprojects {
+
+    bootJar {
+        enabled = false
+    }
+
     ext.useSpring = {
-        apply plugin: 'org.springframework.boot'
-        apply plugin: 'io.spring.dependency-management'
 
         dependencies {
             implementation('org.springframework.boot:spring-boot-starter')
@@ -67,6 +89,14 @@ subprojects {
         }
     }
 
+    ext.useSpringSecurity = {
+        dependencies {
+            implementation('org.springframework.boot:spring-boot-starter-security')
+            implementation('org.springframework.security:spring-security-test')
+            compile('com.auth0:java-jwt:3.8.1')
+        }
+    }
+
     ext.useSpringData = {
         dependencies {
             compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.19'
@@ -86,4 +116,3 @@ subprojects {
         }
     }
 }
-

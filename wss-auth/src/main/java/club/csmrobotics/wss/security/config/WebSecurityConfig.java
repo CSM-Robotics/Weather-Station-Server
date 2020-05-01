@@ -24,20 +24,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http
-                .exceptionHandling()
-                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), this.userRepository))
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers("/api/getAll").permitAll()
                 .antMatchers("/api/add").hasAnyRole("STATION", "ADMIN")
-                .antMatchers("/user/**").hasRole("ADMIN")
+                .antMatchers("/api/user/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
+                .and()
+                .exceptionHandling()
                 .and().cors()
                 .and().csrf().disable();
     }

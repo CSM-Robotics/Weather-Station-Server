@@ -7,13 +7,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/wss")
 @AllArgsConstructor
 public class PackageController {
     private final PackageService service;
 
     @PreAuthorize("hasAnyRole('ADMIN', 'STATION')")
-    @PostMapping("/add")
+    @PostMapping("/addPackage")
     public Package addPackage(@RequestBody Package p) {
         return service.addPackage(p);
     }

@@ -18,6 +18,7 @@ public class PackageController {
         return service.addPackage(p);
     }
 
+    @CrossOrigin(origins = "https://csmrobotics.club")
     @GetMapping("/getAll")
     public Iterable<Package> getAll() {
         return service.getAll();

@@ -4,3 +4,7 @@ useSpring()
 dependencies {
     compile project(":wss-web")
 }
+bootJar {
+    enabled(true)
+    mainClassName = 'club.csmrobotics.wss.WSSApplication'
+}

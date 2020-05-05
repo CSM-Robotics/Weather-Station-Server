@@ -27,7 +27,7 @@ public class PackageController {
     @PreAuthorize("hasAnyRole('ADMIN', 'STATION')")
     @PostMapping("/deleteById")
     public Package deletePackage(@RequestBody Long id) {
-        return service);
+        return service.deleteById(id);
     }
 }
 

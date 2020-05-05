@@ -21,4 +21,10 @@ public class PackageService {
     public Iterable<Package> getAll() {
         return packageRep.findAll();
     }
+
+    public Package deleteById(Long id){
+        Package pack = packageRep.findById(id).orElseThrow();
+        packageRep.deleteById(id);
+        return pack;
+    }
 }

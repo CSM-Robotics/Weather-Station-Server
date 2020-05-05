@@ -23,6 +23,12 @@ public class PackageController {
     public Iterable<Package> getAll() {
         return service.getAll();
     }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'STATION')")
+    @PostMapping("/deleteById")
+    public Package deletePackage(@RequestBody Long id) {
+        return service.deleteById(id);
+    }
 }
 
 //[

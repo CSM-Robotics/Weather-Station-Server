@@ -5,6 +5,9 @@ import club.csmrobotics.wss.persistance.data.PackageRep;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
+
 @Service
 @AllArgsConstructor
 public class PackageService {
@@ -22,9 +25,23 @@ public class PackageService {
         return packageRep.findAll();
     }
 
-    public Package deleteById(Long id){
+    public Package deleteById(Long id) {
         Package pack = packageRep.findById(id).orElseThrow();
         packageRep.deleteById(id);
         return pack;
+    }
+
+    public Iterable<Package> addAllPackages(Iterable<Package> packages) {
+        return packageRep.saveAll(packages);
+    }
+
+    public Iterable<Package> deleteByIds(Iterable<Long> ids) {
+        var packages = new ArrayList<Package>();
+        ids.forEach(id -> {
+            try {
+                packages.add(deleteById(id));
+            } catch (NoSuchElementException ignore) {}
+        });
+        return packages;
     }
 }

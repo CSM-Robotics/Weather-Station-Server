@@ -28,6 +28,7 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<?> vehicleNotFound(Exception ex, WebRequest request) {
+        System.out.println(ex.getMessage());
         return badRequest().body("errer");
     }
 }

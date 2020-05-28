@@ -18,30 +18,27 @@ public class PackageController {
         return service.addPackage(p);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'STATION')")
+    @PostMapping("/addPackages")
+    public Iterable<Package> addPackages(@RequestBody Iterable<Package> packages) {
+        return service.addAllPackages(packages);
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'STATION')")
+    @DeleteMapping("/deleteById")
+    public Package deletePackage(@RequestBody Long id) {
+        return service.deleteById(id);
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'STATION')")
+    @DeleteMapping("/deleteByIds")
+    public Iterable<Package> deletePackages(@RequestBody Iterable<Long> ids) {
+        return service.deleteByIds(ids);
+    }
+
     @CrossOrigin(origins = "https://csmrobotics.club")
     @GetMapping("/getAll")
     public Iterable<Package> getAll() {
         return service.getAll();
     }
-
-    @PreAuthorize("hasAnyRole('ADMIN', 'STATION')")
-    @PostMapping("/deleteById")
-    public Package deletePackage(@RequestBody Long id) {
-        return service.deleteById(id);
-    }
 }
-
-//[
-//    {
-//        "id": 1,
-//        "temp": 9.0,
-//        "pressPa": 7.0,
-//        "hum": 5.0,
-//        "count": 3,
-//        "packetNum": 6,
-//        "deviceInfo": 4,
-//        "version": 0,
-//        "tvocpp": 8.0,
-//        "co2ppm": 2.0
-//    }
-//]

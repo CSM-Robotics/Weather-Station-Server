@@ -2,6 +2,7 @@
 
 useCommons()
 useSpring()
+useSpringSecurity()
 dependencies {
     compile project(":wss-persistance")
 }

@@ -1,12 +1,13 @@
-package club.csmrobotics.wss.web;
+package club.csmrobotics.wss.web.data;
 
 import club.csmrobotics.wss.domain.data.Package;
-import club.csmrobotics.wss.service.PackageService;
+import club.csmrobotics.wss.service.data.PackageService;
+import club.csmrobotics.wss.web.data.holder.DateRange;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/wss")
+@RequestMapping("/wss")
 @AllArgsConstructor
 public class PackageController {
     private final PackageService service;
@@ -35,4 +36,20 @@ public class PackageController {
     public Iterable<Package> getAll() {
         return service.getAll();
     }
+
+    @GetMapping("/getAllByDateRange")
+    public Iterable<Package> getAllByDateRange(@RequestBody DateRange range) {
+        Iterable<Package> result;
+        if (range.hasEnd() && range.hasStart()) {
+            result = service.getAllByDateBetween(range.getStart(), range.getEnd());
+        } else if (range.hasEnd()) {
+            result = service.getAllByDateBefore(range.getEnd());
+        } else if (range.hasStart()) {
+            result = service.getAllByDateAfter(range.getStart());
+        } else {
+            result = service.getAll();
+        }
+        return result;
+    }
+
 }

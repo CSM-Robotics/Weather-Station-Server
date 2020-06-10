@@ -1,7 +1,7 @@
 package club.csmrobotics.wss.web;
 
 import club.csmrobotics.wss.security.InvalidJwtAuthenticationException;
-import club.csmrobotics.wss.service.PackageNotFoundException;
+import club.csmrobotics.wss.service.data.PackageNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

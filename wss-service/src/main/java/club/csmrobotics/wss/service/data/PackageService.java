@@ -1,4 +1,4 @@
-package club.csmrobotics.wss.service;
+package club.csmrobotics.wss.service.data;
 
 import club.csmrobotics.wss.domain.data.Package;
 import club.csmrobotics.wss.persistance.data.PackageRep;
@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 @Service
@@ -26,6 +27,19 @@ public class PackageService {
     public Iterable<Package> getAll() {
         return packageRep.findAll();
     }
+
+    public Iterable<Package> getAllByDateBetween(Date start, Date end) {
+        return packageRep.findAllByDateBetween(start, end);
+    }
+    public Iterable<Package> getAllByDateBefore(Date date){
+        return packageRep.findAllByDateBefore(date);
+    }
+    public Iterable<Package> getAllByDateAfter(Date date){
+        return packageRep.findAllByDateAfter(date);
+    }
+//    public Iterable<Package> getAllByDate_Day(Date date){
+//        return packageRep.findAllByDate_Day(date);
+//    }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     public Package deleteById(Long id) {

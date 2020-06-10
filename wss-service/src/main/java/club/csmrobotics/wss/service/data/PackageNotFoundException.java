@@ -1,4 +1,4 @@
-package club.csmrobotics.wss.service;
+package club.csmrobotics.wss.service.data;
 
 import java.text.MessageFormat;
 
